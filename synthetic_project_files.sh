@@ -41,36 +41,47 @@ readonly DEFAULT_DIR="SYNTHETIC_PROJECT"
 COUNTRY_CODES=(gb fr de es it us ca jp in br)
 SAMPLE_BAMS=("PD123a.bam" "PD123b.bam" "PD223a.bam" "PD223b.bam" "PD323a.bam" "PD323b.bam")
 
-# HEREDOC CONSTANTS
+# HEREDOC CONSTANTS (using functions for cross-platform compatibility)
 
-read -r -d '' HELLO_WORLD_PY << 'EOF' || true
+function get_hello_world_py() {
+  cat << 'EOF'
 #!/usr/bin/env python3
 print("Hello, World from Python!")
 EOF
+}
 
-read -r -d '' HELLO_WORLD_R << 'EOF' || true
+function get_hello_world_r() {
+  cat << 'EOF'
 #!/usr/bin/env Rscript
 cat("Hello, World from R!\n")
 EOF
+}
 
-read -r -d '' HELLO_WORLD_SH << 'EOF' || true
+function get_hello_world_sh() {
+  cat << 'EOF'
 #!/bin/bash
 echo "Hello, World from Bash!"
 EOF
+}
 
-read -r -d '' RUN_CAVEMAN_SH << 'EOF' || true
+function get_run_caveman_sh() {
+  cat << 'EOF'
 #!/bin/bash
 echo "Running CaVEMan analysis..."
 echo "Analysis complete!"
 EOF
+}
 
-read -r -d '' RUN_PINDEL_SH << 'EOF' || true
+function get_run_pindel_sh() {
+  cat << 'EOF'
 #!/bin/bash
 echo "Running Pindel analysis..."
 echo "Analysis complete!"
 EOF
+}
 
-read -r -d '' SUMMARY_TXT << 'EOF' || true
+function get_summary_txt() {
+  cat << 'EOF'
 Analysis Summary Report
 =======================
 
@@ -90,6 +101,7 @@ Results:
 All synthetic data has been successfully generated.
 This is a training dataset for learning Git workflows.
 EOF
+}
 
 # GLOBAL VARIABLES
 TARGET_DIR=""
@@ -119,18 +131,18 @@ function main() {
   mkdir -p "$TARGET_DIR"/{scripts,plots,data,results,analysis}
 
   # Create script files
-  echo "$HELLO_WORLD_PY" > "$TARGET_DIR/scripts/hello_world.py"
-  echo "$HELLO_WORLD_R" > "$TARGET_DIR/scripts/hello_world.R"
-  echo "$HELLO_WORLD_SH" > "$TARGET_DIR/scripts/hello_world.sh"
+  get_hello_world_py > "$TARGET_DIR/scripts/hello_world.py"
+  get_hello_world_r > "$TARGET_DIR/scripts/hello_world.R"
+  get_hello_world_sh > "$TARGET_DIR/scripts/hello_world.sh"
   chmod +x "$TARGET_DIR/scripts/"*
 
   # Create analysis scripts
-  echo "$RUN_CAVEMAN_SH" > "$TARGET_DIR/analysis/run_caveman.sh"
-  echo "$RUN_PINDEL_SH" > "$TARGET_DIR/analysis/run_pindel.sh"
+  get_run_caveman_sh > "$TARGET_DIR/analysis/run_caveman.sh"
+  get_run_pindel_sh > "$TARGET_DIR/analysis/run_pindel.sh"
   chmod +x "$TARGET_DIR/analysis/"*
 
   # Create results file
-  echo "$SUMMARY_TXT" > "$TARGET_DIR/results/summary.txt"
+  get_summary_txt > "$TARGET_DIR/results/summary.txt"
 
   # Download flag images
   echo "Downloading flag images..."
