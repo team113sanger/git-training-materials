@@ -1,9 +1,6 @@
 # Git Training Materials
 
-```bash
-curl -o synthetic_project_files.sh https://iv3-sharing.cog.sanger.ac.uk/synthetic_project_files.sh
-bash synthetic_project_files.sh && rm synthetic_project_files.sh && cd SYNTHETIC_PROJECT
-```
+
 
 ## Steps for Trainer to Check before workshop
 
@@ -12,9 +9,54 @@ bash synthetic_project_files.sh && rm synthetic_project_files.sh && cd SYNTHETIC
 3. If using a Sanger Mac is Git installed?
 
 
-## Git Commands Covered
+## Git Introduction
 
-### Setting Up Git
+### 0. SSH Key Setup (if needed)
+
+Users can copy-paste this code into their terminal to create an SSH keypair if they do not already have one set up.
+
+As a trainer you will need to still explain what SSH keys, show their contents and then demonstrate adding the public key to GitLab.
+
+```bash
+# Create ~/.ssh with safe permissions
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+
+# Ensure standard SSH files exist
+touch "$HOME/.ssh/config" "$HOME/.ssh/authorized_keys" "$HOME/.ssh/known_hosts"
+chmod 600 "$HOME/.ssh/config" "$HOME/.ssh/authorized_keys" "$HOME/.ssh/known_hosts"
+
+# Create RSA keypair id_rsa / id_rsa.pub with NO passphrase,
+# but only if they don't already exist
+if [ ! -f "$HOME/.ssh/id_rsa" ] && [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
+    ssh-keygen -t rsa -b 4096 -f "$HOME/.ssh/id_rsa" -N "" -q
+else
+    echo "Existing SSH keypair found at ~/.ssh/id_rsa[.pub]; not creating a new one."
+fi
+
+# Fix key permissions (in case they were wrong)
+[ -f "$HOME/.ssh/id_rsa" ] && chmod 600 "$HOME/.ssh/id_rsa"
+[ -f "$HOME/.ssh/id_rsa.pub" ] && chmod 644 "$HOME/.ssh/id_rsa.pub"
+```
+
+### 1. Prepare a Synthetic directory for Git Training
+
+We want a directory of realistic analysis/bioinformatics files rather than starting with an empty directory.
+
+```bash
+# Download the script
+URL=https://iv3-sharing.cog.sanger.ac.uk/synthetic_project_files.sh
+curl -o synthetic_project_files.sh $URL
+bash synthetic_project_files.sh && rm synthetic_project_files.sh && cd SYNTHETIC_PROJECT
+```
+
+### 2. Get traineers to create an uninitialised Git repository in GitLab
+
+Guide them through creating a new project in GitLab. Importantly, do NOT initialise with a README.md file.
+
+Then scroll down to the **section "…or push an existing folder"** and copy the commands for pushing an existing repository from the command line.
+
+### 3. Setting Up Git for the first time
 These steps need to be done only once per machine.
 
 ```bash
@@ -23,7 +65,7 @@ git config --global user.email "<sanger-username>@sanger.ac.uk"
 git config --global core.editor "nano" # explain nano vs vim vs other editors
 ```
 
-### The Git Loop
+### 4. The Git Loop
 We familiarise ourselves with the basic Git workflow: `git add`, `git commit` and `git push` punctuated by `git status` to check our progress.
 
 ```bash
