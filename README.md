@@ -47,7 +47,7 @@ if [ ! -f "$HOME/.ssh/id_rsa" ] && [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then ssh-ke
 ```
 
 <details>
-<summary><strong>How does SSH key authentication work?</strong></summary>
+<summary>📊 <strong>How does SSH key authentication work?</strong></summary>
 
 ![How SSH works](.static/how-SSH-works.png)
 
@@ -66,7 +66,7 @@ The script will print instructions telling you which directory to `cd` into. It 
 
 
 <details>
-<summary><strong>What does the script create?</strong></summary>
+<summary>ℹ️ <strong>What does the script create?</strong></summary>
 
 ```bash
 .
@@ -102,7 +102,7 @@ The script will print instructions telling you which directory to `cd` into. It 
 </details>
 
 <details>
-<summary><strong>Git not installed? (Sanger Mac)</strong></summary>
+<summary>📊 <strong>Git not installed? (Sanger Mac)</strong></summary>
 
 1. Open the **Self Service** application and search for **Homebrew** — install it.
 
@@ -127,7 +127,7 @@ git config --global push.default current
 ```
 
 <details>
-<summary><strong>What do these settings do?</strong></summary>
+<summary>ℹ️ <strong>What do these settings do?</strong></summary>
 
 - We want `user.name` and `user.email` to best facilitate collaboration and attribution of one's work, particularly important in scientific authorship.
 - We want `core.editor` set to a terminal editor that lets us easily write commit messages.
@@ -144,14 +144,14 @@ Guide trainees through creating a new project. The trainer will specify whether 
 Here we are simulating a situation where work has already been done on the filesystem and we want to put it under version control. A more common approach is to start with a brand new Git repo and add files to it over time.
 
 <details>
-<summary><em>Screenshot: creating an uninitialised repo</em></summary>
+<summary>📊 <em>Screenshot: creating an uninitialised repo</em></summary>
 
 ![Creating an uninitialised repo on GitHub/GitLab](.static/github&gitlab-uninitialised-repo-creation.png)
 
 </details>
 
 <details open>
-<summary><strong>If the repo was created empty (no initialisation)</strong></summary>
+<summary>ℹ️ <strong>If the repo was created empty (no initialisation)</strong></summary>
 
 ```bash
 git init
@@ -161,7 +161,7 @@ git remote add origin <YOUR_SSH_URI>
 </details>
 
 <details>
-<summary><strong>If the repo was initialised (with README.md, .gitignore, or LICENSE)</strong></summary>
+<summary>ℹ️ <strong>If the repo was initialised (with README.md, .gitignore, or LICENSE)</strong></summary>
 
 ```bash
 git init
