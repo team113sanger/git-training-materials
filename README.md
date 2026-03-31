@@ -46,6 +46,14 @@ if [ ! -f "$HOME/.ssh/id_rsa" ] && [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then ssh-ke
 [ -f "$HOME/.ssh/id_rsa.pub" ] && chmod 644 "$HOME/.ssh/id_rsa.pub"
 ```
 
+Then to display the public key for copying. We will need this for working with GitLab/GitHub over SSH.
+
+```bash
+cat "$HOME/.ssh/id_rsa.pub"
+# This will print a block of text with 3 parts seperated by spaces
+# i.e. "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3... user@hostname"
+```
+
 <details>
 <summary>📊 <strong>How does SSH key authentication work?</strong></summary>
 
