@@ -59,6 +59,42 @@ The script will print instructions telling you which directory to `cd` into. It 
 
 </details>
 
+<details>
+<summary>What does the script create?</summary>
+
+```bash
+.
+├── analysis
+│   ├── run_caveman.sh
+│   └── run_pindel.sh
+├── data               # ~110MB BAM files to simulate large file that should be ignored
+│   ├── PD123a.bam
+│   ├── PD123b.bam
+│   ├── PD223a.bam
+│   ├── PD223b.bam
+│   ├── PD323a.bam
+│   └── PD323b.bam
+├── plots              # ~2kB flag images to simulate plots that should be tracked
+│   ├── br.png
+│   ├── ca.png
+│   ├── de.png
+│   ├── es.png
+│   ├── fr.png
+│   ├── gb.png
+│   ├── in.png
+│   ├── it.png
+│   ├── jp.png
+│   └── us.png
+├── results
+│   └── summary.txt
+└── scripts
+    ├── hello_world.py
+    ├── hello_world.R
+    └── hello_world.sh
+```
+
+</details>
+
 ### 2. Setting Up Git for the first time
 These steps need to be done only once per machine.
 
