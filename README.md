@@ -1,12 +1,14 @@
 # Git Training Materials
 
-
-
 ## Steps for Trainer to Check before workshop
 
-1. Does participant have a GitLab account?
-2. Has participant been added to the GitLab project? `https://gitlab.internal.sanger.ac.uk/team113_projects/`
+1. Does participant have a GitLab or GitHub account?
+2. Has participant been added to the GitLab project?
 3. If using a Sanger Mac is Git installed?
+
+These materials on [GitLab is the source of truth](https://gitlab.internal.sanger.ac.uk/team113sanger/common/git-training-materials) for the workshop. Please make changes there.
+
+On [GitHub](https://github.com/team113sanger/git-training-materials) these materials are mirrored and synced from GitLab.
 
 
 ## Git Introduction
