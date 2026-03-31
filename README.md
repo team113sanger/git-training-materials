@@ -181,40 +181,6 @@ This pulls the remote's initial commit, bringing in its files alongside your pro
 
 </details>
 
-<details>
-<summary>⚠️ <strong>Error on first push — diverged / unrelated histories</strong></summary>
-
-If you created an initialised repo, skipped `git pull origin main`, and went straight to making your first local commit and pushing — you will get an error. The remote has its own initial commit (e.g. README.md) and your local repo has a separate first commit with no common ancestor, so Git refuses to merge them.
-
-**Solution 1** — Undo the local commit, pull, then redo
-
-```bash
-# Reset to an unborn branch state (your files stay on disk, only the commit is undone)
-git update-ref -d HEAD
-
-# Pull the remote's initial commit
-git pull origin main
-
-# Re-add and recommit your files
-git add <file you tried to commit>
-git commit -m "Your message here"
-
-# Push
-git push
-```
-
-**Solution 2** — Merge both histories despite different origins
-
-```bash
-# Merge the remote history into yours, allowing unrelated histories
-git pull origin main --allow-unrelated-histories --no-edit
-
-# Push the merged result
-git push
-```
-
-</details>
-
 ## Git Introduction (The Workshop Proper)
 
 ### The Git Loop
@@ -236,6 +202,40 @@ git commit -m "Your message here"
 # Like sending your confirmed order to the store to be processed
 git push
 ```
+
+<details>
+<summary>⚠️ <strong>Error on first push - diverged / unrelated histories</strong></summary>
+
+If you created an initialised repo, skipped `git pull origin main`, and went straight to making your first local commit and pushing - you will get an error. The remote has its own initial commit (e.g. README.md) and your local repo has a separate first commit with no common ancestor, so Git refuses to merge them.
+
+**Solution 1** - Undo the local commit, pull, then redo
+
+```bash
+# Reset to an unborn branch state (your files stay on disk, only the commit is undone)
+git update-ref -d HEAD
+
+# Pull the remote's initial commit
+git pull origin main
+
+# Re-add and recommit your files
+git add <file you tried to commit>
+git commit -m "Your message here"
+
+# Push
+git push
+```
+
+**Solution 2** - Merge both histories despite different origins
+
+```bash
+# Merge the remote history into yours, allowing unrelated histories
+git pull origin main --allow-unrelated-histories --no-edit
+
+# Push the merged result
+git push
+```
+
+</details>
 
 ### Important talking points
 
