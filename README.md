@@ -35,6 +35,13 @@ if [ ! -f "$HOME/.ssh/id_rsa" ] && [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then ssh-ke
 [ -f "$HOME/.ssh/id_rsa.pub" ] && chmod 644 "$HOME/.ssh/id_rsa.pub"
 ```
 
+<details>
+<summary><strong>How does SSH key authentication work?</strong></summary>
+
+![How SSH works](.static/how-SSH-works.png)
+
+</details>
+
 ### 1. Prepare a Synthetic directory for Git Training
 
 We want a directory of realistic analysis/bioinformatics files rather than starting with an empty directory.
@@ -45,22 +52,10 @@ curl -fsSL https://github.com/team113sanger/git-training-materials/releases/late
 
 The script will print instructions telling you which directory to `cd` into. It will also check whether Git is installed.
 
-<details>
-<summary>Git not installed? (Sanger Mac)</summary>
 
-1. Open the **Self Service** application and search for **Homebrew** — install it.
-
-   ![Self Service Homebrew install](.static/selfservice-install-brew.png)
-
-2. Once Homebrew is installed, run in the terminal:
-   ```bash
-   brew install git
-   ```
-
-</details>
 
 <details>
-<summary>What does the script create?</summary>
+<summary><strong>What does the script create?</strong></summary>
 
 ```bash
 .
@@ -92,6 +87,20 @@ The script will print instructions telling you which directory to `cd` into. It 
     ├── hello_world.R
     └── hello_world.sh
 ```
+
+</details>
+
+<details>
+<summary><strong>Git not installed? (Sanger Mac)</strong></summary>
+
+1. Open the **Self Service** application and search for **Homebrew** — install it.
+
+   ![Self Service Homebrew install](.static/selfservice-install-brew.png)
+
+2. Once Homebrew is installed, run in the terminal:
+   ```bash
+   brew install git
+   ```
 
 </details>
 
