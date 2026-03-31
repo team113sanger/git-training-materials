@@ -44,10 +44,7 @@ fi
 We want a directory of realistic analysis/bioinformatics files rather than starting with an empty directory.
 
 ```bash
-# Download the script
-URL=https://iv3-sharing.cog.sanger.ac.uk/synthetic_project_files.sh
-curl -o synthetic_project_files.sh $URL
-bash synthetic_project_files.sh && rm synthetic_project_files.sh && cd SYNTHETIC_PROJECT
+curl -fsSL https://github.com/team113sanger/git-training-materials/releases/latest/download/synthetic_project_files.sh | bash && cd "$(whoami)-git-training"
 ```
 
 ### 2. Get traineers to create an uninitialised Git repository in GitLab

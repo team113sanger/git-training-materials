@@ -7,13 +7,13 @@
 # or
 #   ./synthetic_project_files.sh path/to/directory
 #
-# When no argument is provided, the script creates a directory named "synthetic_project"
+# When no argument is provided, the script creates a directory named "<username>-git-training"
 # in the current working directory. If a directory path is provided as an argument,
 # it creates the synthetic project files in the specified directory.
 #
 # The directory structure created is as follows:
 #
-# synthetic_project/
+# <username>-git-training/
 # ├── scripts/
 # │   ├── hello_world.py
 # │   ├── hello_world.R
@@ -37,7 +37,7 @@
 set -euo pipefail
 
 # NORMAL CONSTANTS (read only variables)
-readonly DEFAULT_DIR="SYNTHETIC_PROJECT"
+readonly DEFAULT_DIR="$(whoami | tr '[:upper:]' '[:lower:]' | tr -cs '[:alnum:]' '-' | sed 's/-$//')-git-training"
 COUNTRY_CODES=(gb fr de es it us ca jp in br)
 SAMPLE_BAMS=("PD123a.bam" "PD123b.bam" "PD223a.bam" "PD223b.bam" "PD323a.bam" "PD323b.bam")
 
