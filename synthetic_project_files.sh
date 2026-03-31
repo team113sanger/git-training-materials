@@ -36,6 +36,18 @@
 
 set -euo pipefail
 
+# ANSI COLOUR SUPPORT
+if [ -t 1 ] && command -v tput &>/dev/null && [ "$(tput colors 2>/dev/null || echo 0)" -ge 8 ]; then
+  BOLD=$(tput bold)
+  GREEN=$(tput setaf 2)
+  YELLOW=$(tput setaf 3)
+  RED=$(tput setaf 1)
+  CYAN=$(tput setaf 6)
+  RESET=$(tput sgr0)
+else
+  BOLD="" GREEN="" YELLOW="" RED="" CYAN="" RESET=""
+fi
+
 # NORMAL CONSTANTS (read only variables)
 readonly DEFAULT_DIR="$(whoami | tr '[:upper:]' '[:lower:]' | tr -cs '[:alnum:]' '-' | sed 's/-$//')-git-training"
 COUNTRY_CODES=(gb fr de es it us ca jp in br)
@@ -157,7 +169,27 @@ function main() {
     dd if=/dev/urandom of="$TARGET_DIR/data/$bam" bs=1M count=110 status=none
   done
 
-  echo "Synthetic project created successfully in $TARGET_DIR"
+  # Git availability check
+  echo ""
+  echo "${BOLD}===========================================${RESET}"
+  if command -v git &>/dev/null; then
+    echo "  ${GREEN}${BOLD}Git is installed${RESET}"
+    echo "  $(git --version)"
+  else
+    echo "  ${RED}${BOLD}Git is NOT installed${RESET}"
+    echo "  ${YELLOW}Please let your trainer know.${RESET}"
+  fi
+  echo "${BOLD}===========================================${RESET}"
+
+  # Project created
+  echo ""
+  echo "${BOLD}===========================================${RESET}"
+  echo "  ${GREEN}${BOLD}Project created:${RESET} ${CYAN}$TARGET_DIR${RESET}"
+  echo ""
+  echo "  Run this command next:"
+  echo "    ${YELLOW}${BOLD}cd $TARGET_DIR${RESET}"
+  echo "${BOLD}===========================================${RESET}"
+  echo ""
 }
 
 # MAIN SCRIPT EXECUTION
