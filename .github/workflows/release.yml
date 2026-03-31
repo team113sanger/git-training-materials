@@ -1,0 +1,16 @@
+name: Release with training script
+on:
+  push:
+    tags:
+      - '[0-9]*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create release and upload script
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${{ github.ref_name }}" synthetic_project_files.sh --title "${{ github.ref_name }}" --generate-notes
