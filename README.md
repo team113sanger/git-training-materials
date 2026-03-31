@@ -18,23 +18,17 @@ Users can copy-paste this code into their terminal to create an SSH keypair if t
 As a trainer you will need to still explain what SSH keys, show their contents and then demonstrate adding the public key to GitLab.
 
 ```bash
+# Ensure home directory is not group/other writable (SSH requires this)
+chmod go-w "$HOME"
 # Create ~/.ssh with safe permissions
 mkdir -p "$HOME/.ssh"
 chmod 700 "$HOME/.ssh"
-
 # Ensure standard SSH files exist
 touch "$HOME/.ssh/config" "$HOME/.ssh/authorized_keys" "$HOME/.ssh/known_hosts"
 chmod 600 "$HOME/.ssh/config" "$HOME/.ssh/authorized_keys" "$HOME/.ssh/known_hosts"
-
-# Create RSA keypair id_rsa / id_rsa.pub with NO passphrase,
-# but only if they don't already exist
-if [ ! -f "$HOME/.ssh/id_rsa" ] && [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
-    ssh-keygen -t rsa -b 4096 -f "$HOME/.ssh/id_rsa" -N "" -q
-else
-    echo "Existing SSH keypair found at ~/.ssh/id_rsa[.pub]; not creating a new one."
-fi
-
-# Fix key permissions (in case they were wrong)
+# Create RSA keypair if one doesn't already exist
+if [ ! -f "$HOME/.ssh/id_rsa" ] && [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then ssh-keygen -t rsa -b 4096 -f "$HOME/.ssh/id_rsa" -N "" -q; else echo "Existing SSH keypair found at ~/.ssh/id_rsa[.pub]; not creating a new one."; fi
+# Fix key permissions
 [ -f "$HOME/.ssh/id_rsa" ] && chmod 600 "$HOME/.ssh/id_rsa"
 [ -f "$HOME/.ssh/id_rsa.pub" ] && chmod 644 "$HOME/.ssh/id_rsa.pub"
 ```
