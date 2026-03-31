@@ -1,5 +1,16 @@
 # Git Training Materials
 
+## Table of Contents
+- [Steps for Trainer to Check before workshop](#steps-for-trainer-to-check-before-workshop)
+- [Git Introduction (Preparation)](#git-introduction-preparation)
+  - [0. SSH Key Setup (if needed)](#0-ssh-key-setup-if-needed)
+  - [1. Prepare a Synthetic directory for Git Training](#1-prepare-a-synthetic-directory-for-git-training)
+  - [2. Setting Up Git for the first time](#2-setting-up-git-for-the-first-time)
+  - [3. Create a new repository on GitHub/GitLab](#3-create-a-new-repository-on-githubgitlab)
+- [Git Introduction (The Workshop Proper)](#git-introduction-the-workshop-proper)
+  - [The Git Loop](#the-git-loop)
+  - [Important talking points](#important-talking-points)
+
 ## Steps for Trainer to Check before workshop
 
 1. Does participant have a GitLab or GitHub account?
@@ -11,7 +22,7 @@ These materials on [GitLab is the source of truth](https://gitlab.internal.sange
 On [GitHub](https://github.com/team113sanger/git-training-materials) these materials are mirrored and synced from GitLab.
 
 
-## Git Introduction
+## Git Introduction (Preparation)
 
 ### 0. SSH Key Setup (if needed)
 
@@ -162,7 +173,9 @@ This pulls the remote's initial commit, bringing in its files alongside your pro
 
 </details>
 
-### 4. The Git Loop
+## Git Introduction (The Workshop Proper)
+
+### The Git Loop
 We familiarise ourselves with the basic Git workflow: `git add`, `git commit` and `git push` punctuated by `git status` to check our progress.
 
 ```bash
@@ -182,7 +195,7 @@ git commit -m "Your message here"
 git push
 ```
 
-## Importantant talking points
+### Important talking points
 
 1. When to use Git in one's work
 2. The difference between local and remote repositories
